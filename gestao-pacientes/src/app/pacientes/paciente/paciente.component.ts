@@ -9,10 +9,10 @@ import { Paciente } from '../model/paciente';
 export class PacienteComponent implements OnInit {
 
   paciente: Paciente[] = [
-    { _id: '1', name: 'José' },
-    { _id: '2', name: 'Maria' }
+    { _id: '1', item: '1', name: 'José' },
+    { _id: '2', item: '2', name: 'Maria' }
   ];
-  displayedColumns = ['name']
+  displayedColumns = ['item', 'name']
 
   //constructor(){
     //this.paciente = [];
