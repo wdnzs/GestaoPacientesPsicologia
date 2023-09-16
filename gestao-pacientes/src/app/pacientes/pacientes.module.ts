@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
 
-import { PacientesRoutingModule } from './pacientes-routing.module';
 import { PacienteComponent } from './paciente/paciente.component';
-
+import { PacientesRoutingModule } from './pacientes-routing.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { PacienteComponent } from './paciente/paciente.component';
   ],
   imports: [
     CommonModule,
-    PacientesRoutingModule
+    PacientesRoutingModule,
+    MatTableModule
   ]
 })
 export class PacientesModule { }
