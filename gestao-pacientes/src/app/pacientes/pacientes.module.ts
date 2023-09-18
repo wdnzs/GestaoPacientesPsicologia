@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 
 import { PacienteComponent } from './paciente/paciente.component';
 import { PacientesRoutingModule } from './pacientes-routing.module';
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { PacientesRoutingModule } from './pacientes-routing.module';
   imports: [
     CommonModule,
     PacientesRoutingModule,
-    MatTableModule
+    AppMaterialModule
   ]
 })
 export class PacientesModule { }
