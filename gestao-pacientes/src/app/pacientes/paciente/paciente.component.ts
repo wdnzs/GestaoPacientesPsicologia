@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PacienteService } from './../service/paciente.service';
-import { Observable } from 'rxjs';
-import { Paciente } from '../model/paciente';
 
 @Component({
   selector: 'app-paciente',
@@ -19,7 +17,6 @@ export class PacienteComponent implements OnInit {
  }
 
   ngOnInit(): void {
-    // TODO document why this method 'ngOnInit' is empty
   }
 
 }
