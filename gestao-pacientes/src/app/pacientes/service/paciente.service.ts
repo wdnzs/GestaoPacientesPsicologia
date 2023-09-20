@@ -14,6 +14,6 @@ export class PacienteService {
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Paciente[]>(this.API).pipe(delay(15000));
+    return this.httpClient.get<Paciente[]>(this.API).pipe(delay(2000));
   }
 }

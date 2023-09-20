@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
+import { SharedModule } from '../shared/shared.module';
 import { PacienteComponent } from './paciente/paciente.component';
 import { PacientesRoutingModule } from './pacientes-routing.module';
-import { AppMaterialModule } from '../shared/app-material/app-material.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
   imports: [
     CommonModule,
     PacientesRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    SharedModule
   ]
 })
 export class PacientesModule { }
