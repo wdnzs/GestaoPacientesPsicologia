@@ -9,7 +9,7 @@ import { delay } from 'rxjs';
 })
 export class PacienteService {
 
-  private readonly API = '/assets/pacientes.json';
+  private readonly API = 'api/pacientes';
 
   constructor(private httpClient: HttpClient) { }
 
