@@ -13,14 +13,14 @@ import { PacienteService } from './../service/paciente.service';
 })
 export class PacienteComponent implements OnInit {
 
-  paciente$: Observable <Paciente[]>;
+  paciente: Observable <Paciente[]>;
   displayedColumns = ['item', 'name']
 
   constructor(
     private PacienteService: PacienteService,
     public dialog: MatDialog
   ) {
-    this.paciente$ = this.PacienteService.list()
+    this.paciente = this.PacienteService.list()
       .pipe(
         catchError(error => {
             this.onError('Erro ao carregar pacientes.');
