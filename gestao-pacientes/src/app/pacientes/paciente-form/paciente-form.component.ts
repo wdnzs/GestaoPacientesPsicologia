@@ -13,7 +13,19 @@ export class PacienteFormComponent implements OnInit{
     constructor(private formBuilder: FormBuilder) {
       this.form = this.formBuilder.group( {
         nome: [null],
-
+        dataNascimento: [null],
+        endereco: [null],
+        bairro: [null],
+        cep: [null],
+        cidade: [null],
+        estado: [null],
+        rg: [null],
+        cpf: [null],
+        nomeMae: [null],
+        nomePai: [null],
+        estadoCivil: [null],
+        profissao: [null],
+        nacionalidade: [null]
       })
     }
 
