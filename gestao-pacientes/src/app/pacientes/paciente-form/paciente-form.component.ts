@@ -12,7 +12,6 @@ export class PacienteFormComponent implements OnInit{
 
     constructor(private formBuilder: FormBuilder) {
       this.form = this.formBuilder.group( {
-        _id: [null],
         nome: [null],
 
       })
