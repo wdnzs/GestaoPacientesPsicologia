@@ -9,7 +9,7 @@
       <mat-table [dataSource]="paciente" class="mat-elevation-z8">
         <!-- Item Column -->
         <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef>ID</mat-header-cell >
+          <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
           <mat-cell *matCellDef="let paciente">
             {{ paciente._id }}
           </mat-cell>
@@ -20,6 +20,26 @@
           <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
           <mat-cell *matCellDef="let paciente">
             {{ paciente.nome }}
+          </mat-cell>
+        </ng-container>
+
+        <!-- Ações Column -->
+        <ng-container matColumnDef="acoes">
+          <mat-header-cell *matHeaderCellDef>
+            <button mat-mini-fab color="accent" aria-label="Adicionar um paciente." (click)="onAdd()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-header-cell>
+
+          <mat-cell *matCellDef="let paciente">
+            <button mat-icon-button color="primary" aria-label="Editar um paciente.">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn" aria-label="Excluir um paciente." >
+              <mat-icon>delete</mat-icon>
+            </button>
+
           </mat-cell>
         </ng-container>
 

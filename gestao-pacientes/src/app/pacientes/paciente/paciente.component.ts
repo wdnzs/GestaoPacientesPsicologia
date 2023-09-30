@@ -5,6 +5,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 
 import { Paciente } from '../model/paciente';
 import { PacienteService } from './../service/paciente.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-paciente',
@@ -14,11 +15,13 @@ import { PacienteService } from './../service/paciente.service';
 export class PacienteComponent implements OnInit {
 
   paciente: Observable <Paciente[]>;
-  displayedColumns = ['id', 'nome']
+  displayedColumns = ['id', 'nome', 'acoes']
 
   constructor(
     private PacienteService: PacienteService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.paciente = this.PacienteService.list()
       .pipe(
@@ -39,4 +42,10 @@ export class PacienteComponent implements OnInit {
     });
 
   }
+
+  onAdd(){
+    this.router.navigate(['new'], {relativeTo: this.route})
+  }
+
+
 }
