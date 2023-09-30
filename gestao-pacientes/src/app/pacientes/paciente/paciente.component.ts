@@ -14,7 +14,7 @@ import { PacienteService } from './../service/paciente.service';
 export class PacienteComponent implements OnInit {
 
   paciente: Observable <Paciente[]>;
-  displayedColumns = ['item', 'name']
+  displayedColumns = ['id', 'nome']
 
   constructor(
     private PacienteService: PacienteService,

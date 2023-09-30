@@ -8,18 +8,18 @@
 
       <mat-table [dataSource]="paciente" class="mat-elevation-z8">
         <!-- Item Column -->
-        <ng-container matColumnDef="item">
-          <mat-header-cell *matHeaderCellDef>Item</mat-header-cell >
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>ID</mat-header-cell >
           <mat-cell *matCellDef="let paciente">
-            {{ paciente.item }}
+            {{ paciente._id }}
           </mat-cell>
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="nome">
           <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
           <mat-cell *matCellDef="let paciente">
-            {{ paciente.name }}
+            {{ paciente.nome }}
           </mat-cell>
         </ng-container>
 

@@ -38,7 +38,7 @@ public class PacienteController {
             pacienteRepository.deleteAll();
 
             Paciente paciente = new Paciente();
-            paciente.setNome("José");
+            paciente.setNome("José de Arimatéia");
             paciente.setDataNascimento(new Date("10/10/1974"));
             paciente.setEndereco("Rua sem nome, 10");
             paciente.setBairro("Seila");
