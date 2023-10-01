@@ -1,134 +1,111 @@
 <mat-card>
 
-    <mat-card-content>
+  <mat-card-content>
 
-      <mat-toolbar>
-        <span>Cadastro de Pacientes</span>
-      </mat-toolbar>
+    <mat-toolbar>
+      <span>Cadastro de Pacientes</span>
+    </mat-toolbar>
 
-      <form [formGroup]="form">
+    <form [formGroup]="form">
 
-        <p></p>
+      <p></p>
+<table>
+      <mat-form-field class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Digite o nome do paciente" formControlName="nome">
+      </mat-form-field>
 
-        <mat-form-field class="full-width">
-          <mat-label>Nome</mat-label>
-          <input matInput placeholder="Digite o nome do paciente" formControlName="nome">
-        </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput placeholder="digite a data de nascimento" formControlName="dataNascimento">
+      </mat-form-field>
 
-        <table class="full-width">
-            <td>
-              <mat-form-field class="full-width">
-                <mat-label>Data de Nascimento</mat-label>
-                <input matInput placeholder="digite a data de nascimento" formControlName="dataNascimento">
-              </mat-form-field>
-            </td>
+      <mat-form-field class="half-width">
+        <mat-label>RG</mat-label>
+        <input matInput placeholder="digite o número do RG" formControlName="rg">
+      </mat-form-field>
 
-            <td>
-              <mat-form-field class="full-width">
-                <mat-label>RG</mat-label>
-                <input matInput placeholder="digite o número do RG" formControlName="rg">
-              </mat-form-field>
-            </td>
+      <mat-form-field class="half-width">
+        <mat-label>CPF</mat-label>
+        <input matInput placeholder="digite o número do CPF" formControlName="cpf">
+      </mat-form-field>
 
-            <td>
-              <mat-form-field class="full-width">
-                <mat-label>CPF</mat-label>
-                <input matInput placeholder="digite o número do CPF" formControlName="cpf">
-              </mat-form-field>
-            </td>
+      <mat-form-field class="half-width">
+        <mat-label>Sexo</mat-label>
+        <mat-select>
+          <mat-option value="one">Masculino</mat-option>
+          <mat-option value="two">Feminino</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <td>
-                <mat-form-field class="full-width">
-                  <mat-label>Sexo</mat-label>
-                  <mat-select>
-                    <mat-option value="one">First option</mat-option>
-                    <mat-option value="two">Second option</mat-option>
-                  </mat-select>
-                </mat-form-field>
-            </td>
-        </table>
+      <mat-form-field class="half-width">
+        <mat-label>Profissão</mat-label>
+        <mat-select>
+          <mat-option value="one">Desenvolvedor de Sistemas</mat-option>
+          <mat-option value="two">Psicólogo</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-        <table class="full-width">
-          <td>
-          <mat-form-field class="full-width">
-            <mat-label>Profissão</mat-label>
-            <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
-            </mat-select>
-          </mat-form-field>
-          </td>
+      <mat-form-field class="half-width">
+        <mat-label>Estado Civil</mat-label>
+        <mat-select>
+          <mat-option value="one">Casado</mat-option>
+          <mat-option value="two">Solteiro</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-          <td>
-          <mat-form-field class="full-width">
-            <mat-label>Estado Civil</mat-label>
-            <mat-select>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
-            </mat-select>
-          </mat-form-field>
-          </td>
+      <mat-form-field class="half-width">
+        <mat-label>Nacionalidade</mat-label>
+        <mat-select>
+          <mat-option value="one">Brasileiro</mat-option>
+          <mat-option value="two">Inglês</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-          <td>
-            <mat-form-field class="full-width">
-              <mat-label>Nacionalidade</mat-label>
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-              </mat-select>
-            </mat-form-field>
-            </td>
-        </table>
+      <mat-form-field class="full-width">
+        <mat-label>Endereço</mat-label>
+        <input matInput placeholder="Digite o endereço do paciente." formControlName="cpf">
+      </mat-form-field>
 
-        <mat-form-field class="full-width">
-          <mat-label>Endereço</mat-label>
-          <input matInput placeholder="Digite o endereço do paciente." formControlName="cpf">
-        </mat-form-field>
+      <mat-form-field class="half-width">
+        <mat-label>Bairro</mat-label>
+        <input matInput placeholder="Digite o bairro." formControlName="bairro">
+      </mat-form-field>
 
-        <table class="full-width">
-          <td>
-            <mat-form-field class="full-width">
-              <mat-label>Bairro</mat-label>
-              <input matInput placeholder="Digite o bairro." formControlName="bairro">
-            </mat-form-field>
-          </td>
+      <mat-form-field class="half-width">
+        <mat-label>Cidade</mat-label>
+        <input matInput placeholder="Digite a cidade" formControlName="cidade">
+      </mat-form-field>
 
-          <td>
-            <mat-form-field class="full-width">
-              <mat-label>Cidade</mat-label>
-              <input matInput placeholder="Digite a cidade" formControlName="cidade">
-            </mat-form-field>
-          </td>
+      <mat-form-field class="half-width">
+        <mat-label>Estado</mat-label>
+        <mat-select>
+          <mat-option value="one">São Paulo</mat-option>
+          <mat-option value="two">Brasília</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-          <td>
-            <mat-form-field class="full-width">
-              <mat-label>Estado</mat-label>
-              <mat-select>
-                <mat-option value="one">São Paulo</mat-option>
-                <mat-option value="two">Brasília</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
+      <mat-form-field class="half-width">
+        <mat-label>CEP</mat-label>
+        <input matInput placeholder="Digite a cidade" formControlName="cep">
+      </mat-form-field>
 
-          <td>
-            <mat-form-field class="full-width">
-              <mat-label>CEP</mat-label>
-              <input matInput placeholder="Digite a cidade" formControlName="cep">
-            </mat-form-field>
-          </td>
-        </table>
+      <mat-form-field class="full-width">
+        <mat-label>Nome do Pai</mat-label>
+        <input matInput placeholder="digite o nome do pai" formControlName="nomePai">
+      </mat-form-field>
 
+      <mat-form-field class="full-width">
+        <mat-label>Nome da Mãe</mat-label>
+        <input matInput placeholder="digite o nome da mãe" formControlName="nomeMae">
+      </mat-form-field>
+    </table>
+    </form>
+  </mat-card-content>
 
-        <mat-form-field class="full-width">
-          <mat-label>Nome do Pai</mat-label>
-          <input matInput placeholder="digite o nome do pai" formControlName="nomePai">
-        </mat-form-field>
+  <mat-card-actions >
+    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
 
-        <mat-form-field class="full-width">
-          <mat-label>Nome da Mãe</mat-label>
-          <input matInput placeholder="digite o nome da mãe" formControlName="nomeMae">
-        </mat-form-field>
-
-      </form>
-    </mat-card-content>
 </mat-card>

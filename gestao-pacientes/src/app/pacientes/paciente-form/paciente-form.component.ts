@@ -29,7 +29,11 @@ export class PacienteFormComponent implements OnInit{
       })
     }
 
-    ngOnInit(): void {
+    onSubmit(){
+
+    }
+
+    onCancel(){
 
     }
 }
