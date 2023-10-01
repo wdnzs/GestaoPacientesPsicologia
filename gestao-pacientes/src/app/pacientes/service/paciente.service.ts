@@ -23,4 +23,8 @@ export class PacienteService {
   loadById(id: string) {
     return this.httpClient.get<Paciente>(`${this.API}/${id}`);
   }
+
+  save(record: Paciente){
+    return this.httpClient.post<Paciente>(this.API, record).pipe(first());
+  }
 }
