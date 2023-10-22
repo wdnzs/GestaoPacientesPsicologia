@@ -6,7 +6,7 @@
       <span>Cadastro de Pacientes</span>
     </mat-toolbar>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" class="min-width">
 
       <p></p>
 <table>
@@ -65,7 +65,7 @@
 
       <mat-form-field class="full-width">
         <mat-label>Endereço</mat-label>
-        <input matInput placeholder="Digite o endereço do paciente." formControlName="cpf">
+        <input matInput placeholder="Digite o endereço do paciente." formControlName="endereco">
       </mat-form-field>
 
       <mat-form-field class="half-width">
@@ -81,14 +81,14 @@
       <mat-form-field class="half-width">
         <mat-label>Estado</mat-label>
         <mat-select formControlName="estado">
-          <mat-option value="São Paulo">São Paulo</mat-option>
-          <mat-option value="Brasília">Brasília</mat-option>
+          <mat-option value="SP">SP</mat-option>
+          <mat-option value="BSB">BSB</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field class="half-width">
         <mat-label>CEP</mat-label>
-        <input matInput placeholder="Digite a cidade" formControlName="cep">
+        <input matInput placeholder="Digite o CEP" formControlName="cep">
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -106,7 +106,7 @@
 
   <mat-card-actions >
     <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
-    <button mat-raised-button>Cancelar</button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
   </mat-card-actions>
 
 </mat-card>
