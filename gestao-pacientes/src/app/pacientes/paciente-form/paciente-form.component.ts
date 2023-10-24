@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { PacienteService } from '../service/paciente.service';
@@ -12,31 +12,31 @@ import { PacienteService } from '../service/paciente.service';
 })
 export class PacienteFormComponent implements OnInit{
 
-    form: FormGroup;
+    form = this.formBuilder.group( {
+      nome: [''],
+      dataNascimento: [null],
+      endereco: [''],
+      bairro: [''],
+      cep: [''],
+      cidade: [''],
+      estado: [''],
+      rg: [''],
+      cpf: [''],
+      nomeMae: [''],
+      nomePai: [''],
+      estadoCivil: [''],
+      profissao: [''],
+      nacionalidade: ['']
+    });
 
-    constructor(private formBuilder: FormBuilder,
+    constructor(private formBuilder: UntypedFormBuilder,
       private service: PacienteService,
       private snackBar: MatSnackBar,
       private location: Location) {
-      this.form = this.formBuilder.group( {
-        nome: [null],
-        dataNascimento: [null],
-        endereco: [null],
-        bairro: [null],
-        cep: [null],
-        cidade: [null],
-        estado: [null],
-        rg: [null],
-        cpf: [null],
-        nomeMae: [null],
-        nomePai: [null],
-        estadoCivil: [null],
-        profissao: [null],
-        nacionalidade: [null]
-      })
     }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // document why this method 'ngOnInit' is empty
   }
 
     onSubmit(){
