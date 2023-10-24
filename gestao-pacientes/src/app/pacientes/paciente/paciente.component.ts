@@ -14,8 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PacienteComponent implements OnInit {
 
-  paciente: Observable <Paciente[]>;
-  displayedColumns = ['id', 'nome', 'acoes']
+  paciente$: Observable <Paciente[]> | null = null;
+
 
   constructor(
     private PacienteService: PacienteService,
@@ -23,7 +23,7 @@ export class PacienteComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.paciente = this.PacienteService.list()
+    this.paciente$ = this.PacienteService.list()
       .pipe(
         catchError(error => {
             this.onError('Erro ao carregar pacientes.');

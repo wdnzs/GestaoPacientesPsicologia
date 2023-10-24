@@ -38,7 +38,7 @@ public class Paciente {
     @Column(length = 100, nullable = false)
     private String cidade;
 
-    @Column(length = 3, nullable = false)
+    @Column(length = 200, nullable = false)
     private String estado;
 
     @Column(length = 50, nullable = true)
