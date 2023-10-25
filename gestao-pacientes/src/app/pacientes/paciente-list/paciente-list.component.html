@@ -10,22 +10,22 @@
 
   <!-- Coluna Name -->
   <ng-container matColumnDef="nome" >
-    <mat-header-cell *matHeaderCellDef class="column-data-header">Nome</mat-header-cell>
-    <mat-cell *matCellDef="let paciente" class="column-data">
+    <mat-header-cell *matHeaderCellDef class="column">Nome</mat-header-cell>
+    <mat-cell *matCellDef="let paciente" class="column">
       {{ paciente.nome }}
     </mat-cell>
   </ng-container>
 
   <!-- Coluna Ações -->
   <ng-container matColumnDef="acoes">
-    <mat-header-cell *matHeaderCellDef class="action-column-header">
+    <mat-header-cell *matHeaderCellDef class="action-column">
       <button mat-mini-fab color="accent" aria-label="Adicionar um paciente." (click)="onAdd()">
         <mat-icon>add</mat-icon>
       </button>
     </mat-header-cell>
 
     <mat-cell *matCellDef="let paciente" class="action-column">
-      <button mat-icon-button color="primary" aria-label="Editar um paciente.">
+      <button mat-icon-button color="primary" aria-label="Editar um paciente." class="action-column-header">
         <mat-icon>edit</mat-icon>
       </button>
 
