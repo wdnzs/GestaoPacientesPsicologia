@@ -62,7 +62,4 @@ public class Paciente {
     @Column(length = 100, nullable = false)
     private String nacionalidade;
 
-
-
-
 }
