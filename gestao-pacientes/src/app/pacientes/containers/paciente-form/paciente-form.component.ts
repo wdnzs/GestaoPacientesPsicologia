@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { PacienteService } from '../service/paciente.service';
+import { PacienteService } from '../../service/paciente.service';
 
 @Component({
   selector: 'app-paciente-form',

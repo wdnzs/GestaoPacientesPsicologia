@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
-import { Paciente } from '../model/paciente';
-import { PacienteService } from './../service/paciente.service';
+import { Paciente } from '../../model/paciente';
+import { PacienteService } from '../../service/paciente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

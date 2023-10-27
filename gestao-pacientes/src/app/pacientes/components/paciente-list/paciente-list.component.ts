@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Paciente } from '../model/paciente';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Paciente } from '../../model/paciente';
 
 @Component({
   selector: 'app-paciente-list',
@@ -10,17 +10,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PacienteListComponent {
 
   @Input() paciente: Paciente[] = [];
+  @Output() add = new EventEmitter(false);
 
   readonly displayedColumns = ['id', 'nome', 'acoes'];
 
-  constructor(private router: Router,
-    private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    // document why this method 'ngOnInit' is empty
 
   }
 
   onAdd(){
-    this.router.navigate(['new'], {relativeTo: this.route})
+    this.add.emit(true);
   }
 }
