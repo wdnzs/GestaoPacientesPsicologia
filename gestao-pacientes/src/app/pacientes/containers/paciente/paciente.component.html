@@ -6,7 +6,8 @@
       <app-paciente-list
         *ngIf="paciente$ | async as paciente; else loading"
         [paciente]="paciente"
-        (add)="onAdd()">
+        (add)="onAdd()"
+        (edit)="onEdit($event)">
       </app-paciente-list>
 
       <ng-template #loading>

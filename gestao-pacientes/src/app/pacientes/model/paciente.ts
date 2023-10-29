@@ -1,7 +1,7 @@
 export interface Paciente {
   _id: string;
   nome: string;
-  dataNascimento: Date;
+  dataNascimento: string;
   endereco: string;
   bairro: string;
   cep: string;
