@@ -19,6 +19,7 @@ export class PacienteResolver implements Resolve<Paciente> {
     return of({ _id: '',
                 nome: '',
                 dataNascimento: '',
+                sexo: '',
                 endereco: '',
                 bairro: '',
                 cep: '',

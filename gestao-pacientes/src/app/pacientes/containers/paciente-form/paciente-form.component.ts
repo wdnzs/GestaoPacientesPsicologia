@@ -2,8 +2,10 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 
 import { PacienteService } from '../../service/paciente.service';
+import { Paciente } from '../../model/paciente';
 
 @Component({
   selector: 'app-paciente-form',
@@ -13,8 +15,10 @@ import { PacienteService } from '../../service/paciente.service';
 export class PacienteFormComponent implements OnInit{
 
     form = this.formBuilder.group( {
+      _id: [''],
       nome: [''],
-      dataNascimento: [null],
+      dataNascimento: [''],
+      sexo: [''],
       endereco: [''],
       bairro: [''],
       cep: [''],
@@ -32,11 +36,13 @@ export class PacienteFormComponent implements OnInit{
     constructor(private formBuilder: UntypedFormBuilder,
       private service: PacienteService,
       private snackBar: MatSnackBar,
-      private location: Location) {
+      private location: Location,
+      private route: ActivatedRoute) {
     }
 
   ngOnInit(): void {
-    // document why this method 'ngOnInit' is empty
+    const paciente: Paciente = this.route.snapshot.data['paciente'];
+    this.form.setValue (paciente);
   }
 
     onSubmit(){

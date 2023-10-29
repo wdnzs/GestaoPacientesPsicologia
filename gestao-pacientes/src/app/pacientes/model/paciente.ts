@@ -2,6 +2,7 @@ export interface Paciente {
   _id: string;
   nome: string;
   dataNascimento: string;
+  sexo: string;
   endereco: string;
   bairro: string;
   cep: string;

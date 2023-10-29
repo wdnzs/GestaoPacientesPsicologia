@@ -1,7 +1,5 @@
 package com.diniz.gestaopacientesapi.model;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -24,7 +22,10 @@ public class Paciente {
     private String nome;
 
     @Column(length = 10, nullable = false)
-    private Date dataNascimento;
+    private String dataNascimento;
+
+    @Column(length = 10, nullable = false)
+    private String sexo;
 
     @Column(length = 250, nullable = false)
     private String endereco;
