@@ -25,6 +25,17 @@ export class PacienteService {
   }
 
   save(record: Paciente){
+    if(record._id){
+      return this.update(record);
+    }
+    return this.create(record);
+  }
+
+  private create(record: Paciente){
     return this.httpClient.post<Paciente>(this.API, record).pipe(first());
+  }
+
+  private update(record: Paciente){
+    return this.httpClient.put<Paciente>(`${this.API}/${record._id}`, record).pipe(first());
   }
 }
