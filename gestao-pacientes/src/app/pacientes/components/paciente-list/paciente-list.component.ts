@@ -28,4 +28,5 @@ export class PacienteListComponent {
   onEdit(paciente:Paciente) {
     this.edit.emit(paciente);
   }
+
 }

@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,14 +46,10 @@ public class PacienteController<U> {
        return pacienteRepository.save(paciente);
      }
     
-     /*
-      * Não ficou clara a exigência de inserir Function dentro do .map,
-      * incluindo o alerta no return.
-      */
     @PutMapping("/{id}")
-    public U update(@PathVariable Long id, @RequestBody Paciente paciente){
+    public ResponseEntity<Paciente> update(@PathVariable Long id, @RequestBody Paciente paciente){
         return pacienteRepository.findById(id)
-            .map((Function<? super Paciente, ? extends U>) item -> {
+            .map((Function<? super Paciente, ? extends ResponseEntity<Paciente>>) item -> {
                 item.setNome(paciente.getNome());
                 item.setDataNascimento(paciente.getDataNascimento());
                 item.setSexo(paciente.getSexo());
@@ -70,10 +67,17 @@ public class PacienteController<U> {
                 item.setNacionalidade(paciente.getNacionalidade());
 
                 Paciente updated = pacienteRepository.save(item);
-                return (U) ResponseEntity.ok().body(updated);
-                
+                return ResponseEntity.ok().body(updated);
             }).orElseThrow();
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id, @RequestBody Paciente paciente) {
+        return pacienteRepository.findById(id)
+        .map((Function<? super Paciente, ? extends ResponseEntity<Void>>) item -> {
+            pacienteRepository.deleteById(id);
+            return ResponseEntity.noContent().<Void>build();       
+        }).orElseThrow();
     }
     
 }
