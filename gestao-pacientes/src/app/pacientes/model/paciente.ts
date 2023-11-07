@@ -15,4 +15,7 @@ export interface Paciente {
   estadoCivil: string;
   profissao: string;
   nacionalidade: string;
+  telefone: string;
+  celular: string;
+  email: string;
 }

@@ -65,6 +65,9 @@ public class PacienteController<U> {
                 item.setEstadoCivil(paciente.getEstadoCivil());
                 item.setProfissao(paciente.getProfissao());
                 item.setNacionalidade(paciente.getNacionalidade());
+                item.setCelular(paciente.getCelular());
+                item.setTelefone(paciente.getTelefone());
+                item.setEmail(paciente.getEmail());
 
                 Paciente updated = pacienteRepository.save(item);
                 return ResponseEntity.ok().body(updated);

@@ -31,7 +31,10 @@ export class PacienteResolver implements Resolve<Paciente> {
                 nomePai: '',
                 estadoCivil: '',
                 profissao: '',
-                nacionalidade: ''
+                nacionalidade: '',
+                telefone: '',
+                celular: '',
+                email: ''
                 });
   }
 }

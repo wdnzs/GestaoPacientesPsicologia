@@ -63,4 +63,13 @@ public class Paciente {
     @Column(length = 100, nullable = false)
     private String nacionalidade;
 
+    @Column(length = 14, nullable = true)
+    private String telefone;
+
+    @Column(length = 15, nullable = true)
+    private String celular;
+
+    @Column(length = 100, nullable = true)
+    private String email;
+
 }
