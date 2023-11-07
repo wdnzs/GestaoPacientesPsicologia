@@ -7,6 +7,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 
 import { Paciente } from '../../model/paciente';
 import { PacienteService } from '../../service/paciente.service';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-paciente',
@@ -57,17 +58,28 @@ export class PacienteComponent implements OnInit {
   }
 
   onDelete(paciente: Paciente) {
-    this.pacienteService.delete(paciente._id).subscribe({
-      next: () => {
-        this.refresh();
-        this.snackBar.open('Paciente removido com sucesso!', 'X', {
-          duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center'
-        });
-      },
-      error: () => this.onError('Erro ao tentar remover paciente!')
-   });
+
+    const dialogRef = this.dialog.open(
+      ConfirmationDialogComponent, {
+        data: 'Tem certeza que deseja remover este paciente?'
+      }
+    );
+
+    dialogRef.afterClosed().subscribe((result:boolean) => {
+      if (result){
+        this.pacienteService.delete(paciente._id).subscribe({
+          next: () => {
+            this.refresh();
+            this.snackBar.open('Paciente removido com sucesso!', '', {
+              duration: 3000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center'
+            });
+          },
+          error: () => this.onError('Erro ao tentar remover paciente!')
+       });
+      }
+    });
 
   }
 
