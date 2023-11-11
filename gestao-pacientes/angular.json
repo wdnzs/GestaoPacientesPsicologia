@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "gestao-pacientes:build:production"
+              "buildTarget": "gestao-pacientes:build:production"
             },
             "development": {
-              "browserTarget": "gestao-pacientes:build:development"
+              "buildTarget": "gestao-pacientes:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gestao-pacientes:build"
+            "buildTarget": "gestao-pacientes:build"
           }
         },
         "test": {
