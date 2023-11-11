@@ -1,6 +1,9 @@
 # Gestao Pacientes Psicologia
 Aplicação desenvolvida utilizando Angular e Spring Boot para controle de dados de pacientes atendidos por profissionais da psicologia.
-<div>
+
+<p align="left"> 
+  <img src="https://komarev.com/ghpvc/?username=wdnzs&label=Profile%20views&color=0e75b6&style=flat" alt="wdnzs" /> 
+</p>
  
 # Ferramentas utilizas no desenvolvimento desta aplicação
 
