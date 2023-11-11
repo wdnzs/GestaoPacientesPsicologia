@@ -89,8 +89,8 @@
       <mat-form-field class="half-width">
         <mat-label>Estado</mat-label>
         <mat-select formControlName="estado">
-          <mat-option value="SP">São Paulo</mat-option>
-          <mat-option value="BSB">Brasília</mat-option>
+          <mat-option value="Sao Paulo">São Paulo</mat-option>
+          <mat-option value="Brasilia">Brasília</mat-option>
         </mat-select>
         <mat-error *ngIf="form.get('estado')?.invalid">{{getErrorMessage('estado')}}</mat-error>
       </mat-form-field>
