@@ -2,14 +2,26 @@
 Aplicação desenvolvida utilizando Angular e Spring Boot para controle de dados de pacientes atendidos por profissionais da psicologia.
 <div>
  
+# Ferramentas utilizas no desenvolvimento desta aplicação
 
-# <img src="https://github.com/devicons/devicon/blob/master/icons/angularjs/angularjs-original.svg" alt="java" width="40" height="40"/>  Angular
+Os frameworks Angular, NodeJs e Spring são atualizados períódicamente.
 
-Atualizado periódicamente para última versão.
+<a href="https://angular.io">
+  <img
+    src="https://github.com/devicons/devicon/blob/master/icons/angularjs/angularjs-original.svg"
+    width="40" 
+    height="40"
+    alt="Página Oficial do Angular" />
+</a>
 
-# <img src="https://github.com/devicons/devicon/blob/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> Java
 
-Esta aplicação utiliza OpenJDK 17 para desenvolvimento.
+<a href="https://openjdk.org/">
+  <img
+    src="https://github.com/devicons/devicon/blob/master/icons/java/java-original.svg"
+    width="40" 
+    height="40"
+    alt="Página Oficial do OpenJDK" />
+</a>
 
 # Teste
 
