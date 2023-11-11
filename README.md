@@ -7,6 +7,10 @@ Aplicação desenvolvida utilizando Angular e Spring Boot para controle de dados
 
 Atualizado periódicamente para última versão.
 
+# <img src="https://github.com/devicons/devicon/blob/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> Java
+
+Esta aplicação utiliza OpenJDK 17 para desenvolvimento.
+
 # Teste
 
 Para testar esta aplicação é necessário ter NodeJs (última versão) e Angular (última versão), incluindo JDK 17 ou superior.
