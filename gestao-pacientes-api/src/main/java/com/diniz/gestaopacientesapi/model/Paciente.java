@@ -1,7 +1,8 @@
 package com.diniz.gestaopacientesapi.model;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -17,6 +18,8 @@ import lombok.Data;
 
 @Data
 @Entity
+@SQLDelete(sql = "UPDATE Paciente SET status = 'Inativo' WHERE id = ?")
+@Where(clause = "status = 'Ativo'")
 public class Paciente {
     
     @Id
@@ -100,5 +103,11 @@ public class Paciente {
     @Email
     @Column(length = 100, nullable = true)
     private String email;
+
+    @NotBlank
+    @Length(min = 5, max = 200)
+    @Pattern(regexp = "Ativo|Inativo")
+    @Column(length = 10, nullable = false)
+    private String status = "Ativo";
 
 }
