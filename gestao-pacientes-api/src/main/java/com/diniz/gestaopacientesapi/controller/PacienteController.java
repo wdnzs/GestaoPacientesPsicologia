@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,12 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.diniz.gestaopacientesapi.model.Paciente;
 import com.diniz.gestaopacientesapi.repository.PacienteRepository;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 
+@Validated
 @RestController
 @RequestMapping("/api/pacientes")
 @AllArgsConstructor
-public class PacienteController<U> {
+public class PacienteController {
 
     private final PacienteRepository pacienteRepository;
 
@@ -34,7 +39,7 @@ public class PacienteController<U> {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity <Paciente> findById(@PathVariable Long id) {
+    public ResponseEntity <Paciente> findById(@PathVariable @NotNull @Positive Long id) {
         return pacienteRepository.findById(id)
             .map(item -> ResponseEntity.ok().body(item))
             .orElse(ResponseEntity.notFound().build());
@@ -42,12 +47,12 @@ public class PacienteController<U> {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Paciente create(@RequestBody Paciente paciente) {
+    public Paciente create(@RequestBody @Valid Paciente paciente) {
        return pacienteRepository.save(paciente);
      }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Paciente> update(@PathVariable Long id, @RequestBody Paciente paciente){
+    public ResponseEntity<Paciente> update(@PathVariable @NotNull @Positive Long id, @RequestBody @Valid Paciente paciente){
         return pacienteRepository.findById(id)
             .map((Function<? super Paciente, ? extends ResponseEntity<Paciente>>) item -> {
                 item.setNome(paciente.getNome());
@@ -75,7 +80,7 @@ public class PacienteController<U> {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable @NotNull @Positive Long id) {
         return pacienteRepository.findById(id)
         .map((Function<? super Paciente, ? extends ResponseEntity<Void>>) item -> {
             pacienteRepository.deleteById(id);
