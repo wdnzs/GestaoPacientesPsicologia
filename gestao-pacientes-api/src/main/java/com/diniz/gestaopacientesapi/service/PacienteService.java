@@ -1,7 +1,6 @@
 package com.diniz.gestaopacientesapi.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.diniz.gestaopacientesapi.exception.RecordNotFoundException;
 import com.diniz.gestaopacientesapi.model.Paciente;
 import com.diniz.gestaopacientesapi.repository.PacienteRepository;
 
@@ -33,15 +33,15 @@ public class PacienteService {
     }
 
     @GetMapping("/{id}")
-    public Optional<Paciente> findById(@PathVariable @NotNull @Positive Long id) {
-        return pacienteRepository.findById(id);
+    public Paciente findById(@PathVariable @NotNull @Positive Long id) {
+        return pacienteRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
     public Paciente create(@RequestBody @Valid Paciente paciente) {
        return pacienteRepository.save(paciente);
     }
 
-    public Optional<Paciente>  update(@NotNull @Positive Long id, @Valid Paciente paciente){
+    public Paciente update(@NotNull @Positive Long id, @Valid Paciente paciente){
         return pacienteRepository.findById(id)
             .map( item -> {
                 item.setNome(paciente.getNome());
@@ -64,15 +64,11 @@ public class PacienteService {
                 item.setEmail(paciente.getEmail());
 
                 return pacienteRepository.save(item);
-            });
+            }).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
-    public boolean delete(@PathVariable @NotNull @Positive Long id) {
-        return pacienteRepository.findById(id)
-        .map(item -> {
-            pacienteRepository.deleteById(id);
-            return true;       
-        }).orElse(false);
+    public void delete(@PathVariable @NotNull @Positive Long id) {
+        pacienteRepository.delete(pacienteRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id)));
     }
 
 }

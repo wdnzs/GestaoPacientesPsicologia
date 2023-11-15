@@ -3,6 +3,7 @@
     <mat-toolbar color="secondary">Lista de Pacientes</mat-toolbar>
 
     <div class="column-flex mat-elevation-z8">
+      
       <app-paciente-list
         *ngIf="paciente$ | async as paciente; else loading"
         [paciente]="paciente"

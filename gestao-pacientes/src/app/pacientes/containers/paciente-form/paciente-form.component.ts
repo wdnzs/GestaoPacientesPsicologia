@@ -96,7 +96,27 @@ export class PacienteFormComponent implements OnInit{
 
   ngOnInit(): void {
     const paciente: Paciente = this.route.snapshot.data['paciente'];
-    this.form.setValue (paciente);
+    this.form.setValue ({
+      _id: paciente._id,
+      nome: paciente.nome,
+      dataNascimento: paciente.dataNascimento,
+      sexo: paciente.sexo,
+      endereco: paciente.endereco,
+      bairro: paciente.bairro,
+      cep: paciente.cep,
+      cidade: paciente.cidade,
+      estado: paciente.estado,
+      rg: paciente.rg,
+      cpf: paciente.cpf,
+      nomeMae: paciente.nomeMae,
+      nomePai: paciente.nomePai,
+      estadoCivil: paciente.estadoCivil,
+      profissao: paciente.profissao,
+      nacionalidade: paciente.nacionalidade,
+      telefone: paciente.telefone,
+      celular: paciente.celular,
+      email: paciente.email
+    });
   }
 
     onSubmit(){

@@ -1,10 +1,8 @@
 package com.diniz.gestaopacientesapi.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,10 +39,8 @@ public class PacienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity <Paciente> findById(@PathVariable @NotNull @Positive Long id) {
-        return pacienteService.findById(id)
-            .map(item -> ResponseEntity.ok().body(item))
-            .orElse(ResponseEntity.notFound().build());
+    public Paciente findById(@PathVariable @NotNull @Positive Long id) {
+        return pacienteService.findById(id);
     }
 
     @PostMapping
@@ -54,20 +50,14 @@ public class PacienteController {
      }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Paciente> update(@PathVariable @NotNull @Positive Long id, @RequestBody @Valid Paciente paciente){
-        return ((Optional<Paciente>) pacienteService.update(id, paciente))
-            .map( item -> {
-                return ResponseEntity.ok().body(item);
-            }).orElse(ResponseEntity.notFound().build());
+    public Paciente update(@PathVariable @NotNull @Positive Long id, @RequestBody @Valid Paciente paciente){
+        return pacienteService.update(id, paciente);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable @NotNull @Positive Long id) {
-        if(pacienteService.delete(id)){
-            return ResponseEntity.noContent().<Void>build();
-        }
-        
-        return ResponseEntity.notFound().build();
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable @NotNull @Positive Long id) {
+        pacienteService.delete(id);
     }
     
 }

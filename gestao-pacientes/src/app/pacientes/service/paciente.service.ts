@@ -24,18 +24,19 @@ export class PacienteService {
     return this.httpClient.get<Paciente>(`${this.API}/${id}`);
   }
 
-  save(record: Paciente){
+  save(record: Partial<Paciente>){
+    console.log(record)
     if(record._id){
       return this.update(record);
     }
     return this.create(record);
   }
 
-  private create(record: Paciente){
+  private create(record: Partial<Paciente>){
     return this.httpClient.post<Paciente>(this.API, record).pipe(first());
   }
 
-  private update(record: Paciente){
+  private update(record: Partial<Paciente>){
     return this.httpClient.put<Paciente>(`${this.API}/${record._id}`, record).pipe(first());
   }
 
