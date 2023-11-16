@@ -105,7 +105,7 @@ public class Paciente {
     private String email;
 
     @NotBlank
-    @Length(min = 5, max = 200)
+    @Length(max = 10)
     @Pattern(regexp = "Ativo|Inativo")
     @Column(length = 10, nullable = false)
     private String status = "Ativo";
