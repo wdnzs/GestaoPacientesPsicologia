@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.diniz.gestaopacientesapi.model.Paciente;
+import com.diniz.gestaopacientesapi.dto.PacienteDTO;
 import com.diniz.gestaopacientesapi.service.PacienteService;
 
 import jakarta.validation.Valid;
@@ -34,23 +34,23 @@ public class PacienteController {
     }
 
     @GetMapping
-    public @ResponseBody List<Paciente> listaPacientes(){
+    public @ResponseBody List<PacienteDTO> listaPacientes(){
         return pacienteService.listaPacientes();
     }
 
     @GetMapping("/{id}")
-    public Paciente findById(@PathVariable @NotNull @Positive Long id) {
+    public PacienteDTO findById(@PathVariable @NotNull @Positive Long id) {
         return pacienteService.findById(id);
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Paciente create(@RequestBody @Valid Paciente paciente) {
+    public PacienteDTO create(@RequestBody @Valid @NotNull PacienteDTO paciente) {
        return pacienteService.create(paciente);
      }
     
     @PutMapping("/{id}")
-    public Paciente update(@PathVariable @NotNull @Positive Long id, @RequestBody @Valid Paciente paciente){
+    public PacienteDTO update(@PathVariable @NotNull @Positive Long id, @RequestBody @Valid @NotNull PacienteDTO paciente){
         return pacienteService.update(id, paciente);
     }
 

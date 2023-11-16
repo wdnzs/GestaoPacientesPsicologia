@@ -1,16 +1,17 @@
 package com.diniz.gestaopacientesapi.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.diniz.gestaopacientesapi.dto.PacienteDTO;
+import com.diniz.gestaopacientesapi.dto.mapper.PacienteMapper;
 import com.diniz.gestaopacientesapi.exception.RecordNotFoundException;
-import com.diniz.gestaopacientesapi.model.Paciente;
 import com.diniz.gestaopacientesapi.repository.PacienteRepository;
 
 import jakarta.validation.Valid;
@@ -22,49 +23,52 @@ import jakarta.validation.constraints.Positive;
 public class PacienteService {
     
     private final PacienteRepository pacienteRepository;
+    private final PacienteMapper pacienteMapper;
 
-    public PacienteService(PacienteRepository pacienteRepository){
+    public PacienteService(PacienteRepository pacienteRepository, PacienteMapper pacienteMapper){
         this.pacienteRepository = pacienteRepository;
+        this.pacienteMapper = pacienteMapper;
     }
 
-    @GetMapping
-    public @ResponseBody List<Paciente> listaPacientes(){
-        return pacienteRepository.findAll();
+    public List<PacienteDTO> listaPacientes(){
+        return pacienteRepository.findAll().stream().map(pacienteMapper::toDTO)
+                    .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public Paciente findById(@PathVariable @NotNull @Positive Long id) {
-        return pacienteRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
+    public PacienteDTO findById(@PathVariable @NotNull @Positive Long id) {
+        return pacienteRepository.findById(id).map(pacienteMapper::toDTO)
+        .orElseThrow(() -> new RecordNotFoundException(id));
     }
 
-    public Paciente create(@RequestBody @Valid Paciente paciente) {
-       return pacienteRepository.save(paciente);
+    public PacienteDTO create(@RequestBody @Valid @NotNull PacienteDTO paciente) {
+       return pacienteMapper.toDTO(pacienteRepository.save(pacienteMapper.toEntity(paciente)));
     }
 
-    public Paciente update(@NotNull @Positive Long id, @Valid Paciente paciente){
+    public PacienteDTO update(@NotNull @Positive Long id, @Valid @NotNull PacienteDTO paciente){
         return pacienteRepository.findById(id)
             .map( item -> {
-                item.setNome(paciente.getNome());
-                item.setDataNascimento(paciente.getDataNascimento());
-                item.setSexo(paciente.getSexo());
-                item.setEndereco(paciente.getEndereco());
-                item.setBairro(paciente.getBairro());
-                item.setCep(paciente.getCep());
-                item.setCidade(paciente.getCidade());
-                item.setEstado(paciente.getEstado());
-                item.setRg(paciente.getRg());
-                item.setCpf(paciente.getCpf());
-                item.setNomeMae(paciente.getNomeMae());
-                item.setNomePai(paciente.getNomePai());
-                item.setEstadoCivil(paciente.getEstadoCivil());
-                item.setProfissao(paciente.getProfissao());
-                item.setNacionalidade(paciente.getNacionalidade());
-                item.setCelular(paciente.getCelular());
-                item.setTelefone(paciente.getTelefone());
-                item.setEmail(paciente.getEmail());
+                item.setNome(paciente.nome());
+                item.setDataNascimento(paciente.dataNascimento());
+                item.setSexo(paciente.sexo());
+                item.setEndereco(paciente.endereco());
+                item.setBairro(paciente.bairro());
+                item.setCep(paciente.cep());
+                item.setCidade(paciente.cidade());
+                item.setEstado(paciente.estado());
+                item.setRg(paciente.rg());
+                item.setCpf(paciente.cpf());
+                item.setNomeMae(paciente.nomeMae());
+                item.setNomePai(paciente.nomePai());
+                item.setEstadoCivil(paciente.estadoCivil());
+                item.setProfissao(paciente.profissao());
+                item.setNacionalidade(paciente.nacionalidade());
+                item.setCelular(paciente.celular());
+                item.setTelefone(paciente.telefone());
+                item.setEmail(paciente.email());
 
                 return pacienteRepository.save(item);
-            }).orElseThrow(() -> new RecordNotFoundException(id));
+            }).map(pacienteMapper::toDTO).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
     public void delete(@PathVariable @NotNull @Positive Long id) {
