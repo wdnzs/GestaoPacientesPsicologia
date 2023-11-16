@@ -65,7 +65,6 @@ public class PacienteMapper {
         paciente.setTelefone(pacienteDTO.telefone());
         paciente.setCelular(pacienteDTO.celular());
         paciente.setEmail(pacienteDTO.email());
-        paciente.setStatus("Ativo");
 
         return paciente;
     }

@@ -5,7 +5,9 @@ import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
 import com.diniz.gestaopacientesapi.enums.Profissao;
+import com.diniz.gestaopacientesapi.enums.Status;
 import com.diniz.gestaopacientesapi.enums.converters.ProfissaoConverter;
+import com.diniz.gestaopacientesapi.enums.converters.StatusConverter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -109,10 +111,9 @@ public class Paciente {
     @Column(length = 100, nullable = true)
     private String email;
 
-    @NotBlank
-    @Length(max = 10)
-    @Pattern(regexp = "Ativo|Inativo")
+    @NotNull
     @Column(length = 10, nullable = false)
-    private String status = "Ativo";
+    @Convert(converter = StatusConverter.class)
+    private Status status = Status.ATIVO;
 
 }

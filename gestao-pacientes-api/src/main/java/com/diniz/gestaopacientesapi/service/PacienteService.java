@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.diniz.gestaopacientesapi.dto.PacienteDTO;
@@ -37,7 +36,7 @@ public class PacienteService {
     }
 
     @GetMapping("/{id}")
-    public PacienteDTO findById(@PathVariable @NotNull @Positive Long id) {
+    public PacienteDTO findById( @NotNull @Positive Long id) {
         return pacienteRepository.findById(id).map(pacienteMapper::toDTO)
         .orElseThrow(() -> new RecordNotFoundException(id));
     }
@@ -72,7 +71,7 @@ public class PacienteService {
             }).map(pacienteMapper::toDTO).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
-    public void delete(@PathVariable @NotNull @Positive Long id) {
+    public void delete(@NotNull @Positive Long id) {
         pacienteRepository.delete(pacienteRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id)));
     }
 
