@@ -3,9 +3,13 @@ package com.diniz.gestaopacientesapi.model;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
+
+import com.diniz.gestaopacientesapi.enums.Profissao;
+import com.diniz.gestaopacientesapi.enums.converters.ProfissaoConverter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -87,7 +91,8 @@ public class Paciente {
     private String estadoCivil;
 
     @Column(length = 200, nullable = true)
-    private String profissao;
+    @Convert(converter = ProfissaoConverter.class)
+    private Profissao profissao;
 
     @NotBlank
     @NotNull

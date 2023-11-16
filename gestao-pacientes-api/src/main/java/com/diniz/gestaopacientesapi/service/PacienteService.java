@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.diniz.gestaopacientesapi.dto.PacienteDTO;
 import com.diniz.gestaopacientesapi.dto.mapper.PacienteMapper;
+import com.diniz.gestaopacientesapi.enums.Profissao;
 import com.diniz.gestaopacientesapi.exception.RecordNotFoundException;
 import com.diniz.gestaopacientesapi.repository.PacienteRepository;
 
@@ -61,7 +62,7 @@ public class PacienteService {
                 item.setNomeMae(paciente.nomeMae());
                 item.setNomePai(paciente.nomePai());
                 item.setEstadoCivil(paciente.estadoCivil());
-                item.setProfissao(paciente.profissao());
+                item.setProfissao(Profissao.ADVOGADO);
                 item.setNacionalidade(paciente.nacionalidade());
                 item.setCelular(paciente.celular());
                 item.setTelefone(paciente.telefone());
