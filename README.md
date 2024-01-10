@@ -7,7 +7,7 @@ Aplicação desenvolvida utilizando Angular e Spring Boot para controle de dados
  
 # Ferramentas utilizas no desenvolvimento desta aplicação
 
-Os frameworks Angular, NodeJs e Spring são atualizados períódicamente.
+Os frameworks Angular, NodeJs e Spring são atualizados periódicamente.
 
 <a href="https://angular.io">
   <img
